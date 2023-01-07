@@ -6,13 +6,13 @@ const mongoose = require('mongoose')
 const MONGODB_URI = process.env.MONGODB_URI;
 
 
-// const db = mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
-// db.then(() => {
-//     console.log("Connected to DataBase")
-// }).catch((e) => {
-//     console.log(`Error ${e}`)
-// });
+db.then(() => {
+    console.log("Connected to DataBase")
+}).catch((e) => {
+    console.log(`Error ${e}`)
+});
 
 
 
