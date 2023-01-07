@@ -6,6 +6,7 @@ import ToDos from './pages/todoList';
 import NoPage from './pages/nopage';
 
 function App() {
+  console.log(process.env.REACT_APP_ENV_STATUS);
   return (
     <div className="App">
       <BrowserRouter>
