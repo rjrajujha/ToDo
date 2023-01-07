@@ -1,7 +1,10 @@
+
 const ToDos = () => {
-  <>
-    <p>ToDos Page</p>
-  </>
+  return (
+    <>
+      <p>ToDos Page</p>
+    </>
+  )
 }
 
 export default ToDos;

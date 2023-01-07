@@ -1,0 +1,15 @@
+body {
+    margin: 0 0;
+    background-color: rgb(255, 100, 100);
+}
+
+
+#login-card {
+    height: 350px;
+    width: 300px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    margin: 10% auto auto auto;
+    background-color: white;
+    text-align: center;
+}
