@@ -15,5 +15,5 @@ const todoSchema = mongoose.Schema({
   }
 })
 
-const ToDos = ('user', todoSchema);
+const ToDos = ('todos', todoSchema);
 module.exports = ToDos;
