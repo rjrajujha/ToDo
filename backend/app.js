@@ -22,23 +22,12 @@ app.get('/', (req, res) => {
 
 app.post('/user', (req, res) => {
   try {
-    res.status(200).json({ test: "Sucess" });
+    res.status(200).json({ path: "user" });
     console.log(req.body);
   } catch (error) {
     console.log(`Error ${error}`)
   }
 })
 
-app.post('/user/reg', async (req, res) => {
-  try {
-    // const username = req.body.username;
-    // const password = req.body.password;
-    await User.insertMany
-    console.log('User Created Sucessfully');
-
-  } catch (error) {
-    console.log(`Error ${error}`)
-  }
-})
 
 module.exports = app;
