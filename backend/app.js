@@ -29,5 +29,13 @@ app.post('/user', (req, res) => {
   }
 })
 
+app.get('/checkbackend', (req, res) => {
+  try {
+    res.status(200).json({ Backend: "Connected" });
+  } catch (error) {
+    console.log(`Error ${error}`);
+  }
+});
+
 
 module.exports = app;
