@@ -4,45 +4,51 @@
     "icons": [
         {
             "src": "images/logo1024.png",
-            "type": "images/png",
-            "sizes": "1024x1024"
+            "type": "image/png",
+            "sizes": "1024x1024",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo512.png",
-            "type": "images/png",
-            "sizes": "512x512"
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo384.png",
-            "type": "images/png",
-            "sizes": "384x384"
+            "type": "image/png",
+            "sizes": "384x384",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo256.png",
-            "type": "images/png",
+            "type": "image/png",
             "sizes": "256x256",
-            "purpose": "maskable"
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo192.png",
-            "type": "images/png",
-            "sizes": "192x192"
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo144.png",
-            "type": "images/png",
+            "type": "image/png",
             "sizes": "144x144",
-            "purpose": "any"
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo96.png",
-            "type": "images/png",
-            "sizes": "96x96"
+            "type": "image/png",
+            "sizes": "96x96",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo72.png",
-            "type": "images/png",
-            "sizes": "72x72"
+            "type": "image/png",
+            "sizes": "72x72",
+            "purpose": "maskable any"
         },
         {
             "src": "images/logo.svg",
