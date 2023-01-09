@@ -57,6 +57,7 @@
     ],
     "start_url": ".",
     "display": "standalone",
+    "description": "A Todo WebApp",
     "theme_color": "#000000",
     "background_color": "#FFFFFF"
 }
