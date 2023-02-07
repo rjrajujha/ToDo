@@ -57,16 +57,18 @@ const Register = () => {
 
         <form onSubmit={(e) => { handleRegister(e) }}>
 
-          <input type='text' value={username} onChange={(e) => { setUserName(e.target.value) }} required
-            placeholder="username" /><br />
+          <input type='text' value={username} onChange={(e) => { setUserName(e.target.value) }}
+            placeholder="username" required /><br /><br />
 
-          <input type='text' value={password} onChange={(e) => { setPassword(e.target.value) }} required placeholder="Password" /><br />
+          <input type='text' value={password} onChange={(e) => { setPassword(e.target.value) }}
+            placeholder="Password" required /><br /><br />
 
-          <input type='password' value={cpassword} onChange={(e) => { setcPassword(e.target.value) }} placeholder="Conform Password" /><br />
+          <input type='password' value={cpassword} onChange={(e) => { setcPassword(e.target.value) }}
+            placeholder="Conform Password" /><br /><br />
 
           <input type='submit' value='Register' />
         </form>
-
+        <br />
         <button onClick={LogIn} id='reg-login'>LogIn</button>
       </div>
     </>

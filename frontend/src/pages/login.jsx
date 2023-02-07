@@ -48,14 +48,14 @@ const LogIn = () => {
         <form onSubmit={(e) => { handleSubmit(e) }}>
 
           <input type='text' value={username} onChange={(e) => { setUserName(e.target.value) }}
-            placeholder="username" required /><br />
+            placeholder="username" required /><br /> <br />
 
           <input type='password' value={password} onChange={(e) => { setPassword(e.target.value); }}
-            placeholder="Password" required /><br />
+            placeholder="Password" required /><br /> <br />
 
           <input type='submit' value='LOGIN' />
         </form>
-
+        <br />
         <button onClick={SignUp} id='login-reg'> Register </button> <br />
       </div>
     </>
