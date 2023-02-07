@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const APIUrl = "test.com"
+import axios from "axios";
+
+const APIUrl = process.env.REACT_APP_APIURL;
+
 
 const Register = () => {
 
@@ -11,57 +14,34 @@ const Register = () => {
   const [cpassword, setcPassword] = useState('');
 
 
-  const handleUserChange = (e) => {
-    setUserName(e.target.value);
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  }
-
-  const handlecPasswordChange = (e) => {
-    setcPassword(e.target.value);
-  }
-
   const handleRegister = async (e) => {
     e.preventDefault();
-    const user = username;
-    const pword = password;
-    const cpword = cpassword;
-    if (pword !== cpword) {
+
+    if (password !== cpassword) {
       alert('Check both Password');
       return;
     }
 
-    const data = { user, pword };
-    console.log(data);
+    axios
+      .post(`${APIUrl}/signup`, {
+        username: username,
+        password: password
+      }).then((res) => {
 
-    let result = await fetch(`${APIUrl}/register`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    }).catch((e) => {
-      alert(e.message);
-    });
+        if (res.data.status === "Success") {
+          alert(res.data.message);
+          navigate('/')
+        }
+        else {
+          alert(res.data.message);
+        }
 
-    let response = await result.json();
+      }).catch((e) => {
+        console.log("Error", e)
+      }).finally(() => {
+        console.log("User Info Fetched")
+      })
 
-    console.warn("result", response)
-
-    localStorage.setItem('user-info', JSON.stringify(result))
-
-    if (response.errors) alert(response.errors[0].msg)
-    if (response.status === "failed") {
-      alert(response.message);
-
-    }
-    if (response.status === "Success") {
-      alert("Sign Up Successfully completed !!");
-      navigate('/')
-    }
 
   }
 
@@ -77,12 +57,12 @@ const Register = () => {
 
         <form onSubmit={(e) => { handleRegister(e) }}>
 
-          <input type='text' value={username} onChange={(e) => { handleUserChange(e) }} required
+          <input type='text' value={username} onChange={(e) => { setUserName(e.target.value) }} required
             placeholder="username" /><br />
 
-          <input type='text' value={password} onChange={(e) => { handlePasswordChange(e) }} required placeholder="Password" /><br />
+          <input type='text' value={password} onChange={(e) => { setPassword(e.target.value) }} required placeholder="Password" /><br />
 
-          <input type='password' value={cpassword} onChange={(e) => { handlecPasswordChange(e) }} placeholder="Conform Password" /><br />
+          <input type='password' value={cpassword} onChange={(e) => { setcPassword(e.target.value) }} placeholder="Conform Password" /><br />
 
           <input type='submit' value='Register' />
         </form>

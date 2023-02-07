@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LogIn />} />
           <Route path="/reg" element={<Register />} />
-          <Route path="/todo" element={<ToDos />} />
+          <Route path="/todos" element={<ToDos />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
