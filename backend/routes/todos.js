@@ -47,6 +47,7 @@ router.post('/add', async (req, res) => {
     }
 })
 
+// Edit a ToDo
 router.put('/edit', async (req, res) => {
     try {
         const data = await ToDos.updateOne({ "_id": req.body._id }, { "title": req.body.title, "note": req.body.note })
@@ -64,7 +65,7 @@ router.put('/edit', async (req, res) => {
     }
 })
 
-
+// Delete a ToDo
 router.delete('/del', async (req, res) => {
     try {
         const data = await ToDos.deleteOne({ "_id": req.body._id })
