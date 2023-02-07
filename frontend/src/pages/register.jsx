@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const APIUrl = "test.com"
 
 const Register = () => {
 
+  const navigate = useNavigate();
 
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -21,20 +23,48 @@ const Register = () => {
     setcPassword(e.target.value);
   }
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    const user = e.target[0].value;
-    const password = e.target[1].value;
-    const cpassword = e.target[2].value;
-    if (password !== cpassword) {
+    const user = username;
+    const pword = password;
+    const cpword = cpassword;
+    if (pword !== cpword) {
       alert('Check both Password');
-    } else {
-      alert(`${user} Registered`);
+      return;
     }
-    e.target[0].value = '';
+
+    const data = { user, pword };
+    console.log(data);
+
+    let result = await fetch(`${APIUrl}/register`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }).catch((e) => {
+      alert(e.message);
+    });
+
+    let response = await result.json();
+
+    console.warn("result", response)
+
+    localStorage.setItem('user-info', JSON.stringify(result))
+
+    if (response.errors) alert(response.errors[0].msg)
+    if (response.status === "failed") {
+      alert(response.message);
+
+    }
+    if (response.status === "Success") {
+      alert("Sign Up Successfully completed !!");
+      navigate('/')
+    }
+
   }
 
-  const navigate = useNavigate();
   const LogIn = () => {
     navigate('/')
   }

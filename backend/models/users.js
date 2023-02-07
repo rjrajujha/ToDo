@@ -4,17 +4,17 @@ const mongoose = require("mongoose");
 // Define a schema
 const Schema = mongoose.Schema;
 
-const todoSchema = new Schema({
-  
-  title: {
+const UserSchema = new Schema({
+
+  username: {
     type: String
   },
-  note: {
+  password: {
     type: String
   }
 
 });
 
-const ToDos = mongoose.model("todo", todoSchema);
+const Users = mongoose.model("users", UserSchema);
 
-module.exports = ToDos;
+module.exports = Users;

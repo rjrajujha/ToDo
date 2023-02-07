@@ -1,19 +1,16 @@
 const app = require('./app');
-const dotenv = require('dotenv');
-dotenv.config();
-const port = process.env.PORT || 3000;
-const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI;
 
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
 
-const db = mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+require('dotenv').config();
+const mondodbURL = process.env.mondodbURL;
+const port = process.env.PORT;
 
-db.then(() => {
-    console.log("Connected to DataBase")
-}).catch((e) => {
-    console.log(`Error ${e}`)
-});
-
+mongoose.connect(`${mondodbURL}/todos`)
+    .then(() => console.log('Connected to dataBase'))
+    .catch((err) => console.log("Error connecting dataBase", err))
+    .finally(() => console.log("dataBase Connection finished"));
 
 
 app.listen(port, () => {
