@@ -42,11 +42,10 @@ const Register = () => {
         console.log("User Info Fetched")
       })
 
-
   }
 
   const LogIn = () => {
-    navigate('/')
+    navigate('/todos')
   }
 
 
