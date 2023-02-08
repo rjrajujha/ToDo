@@ -31,9 +31,6 @@ router.post('/', async (req, res) => {
             try {
                 if (result) {
 
-                    // var decoded = jwt.verify(token, process.env.mySecretKey);
-                    // console.log(decoded);
-
                     return res.json({
                         status: "Sucess",
                         message: "LogIn Sucessfully",

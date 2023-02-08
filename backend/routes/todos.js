@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const jwtAuth = require("../Middleware/Auth");
 
 //User schema
 const ToDos = require("../models/todos");
@@ -12,7 +13,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 // define the all ToDos route
-router.get('/', async (req, res) => {
+router.get('/', jwtAuth, async (req, res) => {
     try {
         const data = await ToDos.find({});
         res.json({
