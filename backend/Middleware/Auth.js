@@ -5,7 +5,7 @@ const jwtAuth = (async (req, res, next) => {
 
     if (req.headers.authorization) {
 
-        let token = req.headers.authorization.split(" ")[1];
+        let token = req.headers.authorization;
         console.log("Token :", token);
 
         // verify a token symmetric - synchronous
@@ -28,11 +28,12 @@ const jwtAuth = (async (req, res, next) => {
             }
             catch (error) {
                 if (err) {
-                    console.log("Error", err);
+                    console.log("Error :", err);
                 }
                 res.json({
                     status: "failed",
-                    message: "error_validating_token", error
+                    message: "error_validating_token",
+                    error
                 })
             }
         });
