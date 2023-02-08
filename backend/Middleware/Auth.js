@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const jwtAuth = (async (req, res, next) => {
 
-    if (req.headers.authorization) {
+    let token = req.headers.authorization;
+    // console.log("Token :", token);
 
-        let token = req.headers.authorization;
-        console.log("Token :", token);
+    if (token) {
 
         // verify a token symmetric - synchronous
         // var decodedWithSync = jwt.verify(token, process.env.mySecretKey);
@@ -16,7 +16,7 @@ const jwtAuth = (async (req, res, next) => {
         jwt.verify(token, process.env.mySecretKey, (err, decoded) => {
             try {
                 if (decoded) {
-                    console.log("Decoded :", decoded);
+                    // console.log("Decoded :", decoded);
                     next()
                 }
                 else {

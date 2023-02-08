@@ -1,15 +1,24 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 const APIUrl = process.env.REACT_APP_APIURL;
 
 const ToDos = () => {
 
+  let notes = [];
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  // console.log("Token from react", token);
 
-  console.log("Token from react", token);
+  useEffect(() => {
+    if (!token) {
+      console.warn("not_a_token");
+      navigate('/');
+      return;
+    }
+  })
 
   axios
     .get(`${APIUrl}/todos`, {
@@ -17,19 +26,18 @@ const ToDos = () => {
         'authorization': token
       }
     }).then((res) => {
-      console.log("response from backend :", res);
+      if (res.data.status === "sucess") {
+        notes = res.data.data;
+        console.log(notes);
+      }
+      else {
+        console.warn("Error_fetching_data");
+      }
     }).catch((e) => {
       console.log("Error", e)
     }).finally(() => {
       console.log("User Info Fetched")
     })
-
-  useEffect(() => {
-    if (!token) {
-      console.log("not_a_token");
-      navigate('/');
-    }
-  })
 
   const handleLogout = () => {
     localStorage.removeItem("token");
