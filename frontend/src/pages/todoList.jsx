@@ -6,11 +6,9 @@ const APIUrl = process.env.REACT_APP_APIURL;
 
 const ToDos = () => {
 
-  let notes = [];
-
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  // console.log("Token from react", token);
+  // console.log("Token from react :", token);
 
   useEffect(() => {
     if (!token) {
@@ -27,11 +25,15 @@ const ToDos = () => {
       }
     }).then((res) => {
       if (res.data.status === "sucess") {
-        notes = res.data.data;
-        console.log(notes);
+
+        //ToDos data Oprations
+        console.log(res.data);
+
       }
       else {
-        console.warn("Error_fetching_data");
+        console.warn("Error_fetching_data", res.data);
+        localStorage.removeItem("token");
+        navigate('/');
       }
     }).catch((e) => {
       console.log("Error", e)

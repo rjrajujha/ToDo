@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const jwtAuth = (async (req, res, next) => {
+const jwtAuth = ((req, res, next) => {
 
     let token = req.headers.authorization;
     // console.log("Token :", token);
@@ -40,12 +40,11 @@ const jwtAuth = (async (req, res, next) => {
     }
 
     else {
-        res.status(403).json({
+        res.json({
             status: "failed",
             message: "unauthorized"
         })
     }
-}
-)
+})
 
 module.exports = jwtAuth;
