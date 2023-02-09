@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const validUser = require("../Middleware/CheckUser")
 
 //bcrypt : https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcrypt');
@@ -16,7 +17,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 // define the home page route
-router.post('/', async (req, res) => {
+router.post('/', validUser, async (req, res) => {
 
     //check whethre usrers alread existe or not
     const user = await Users.findOne({ username: req.body.username });
