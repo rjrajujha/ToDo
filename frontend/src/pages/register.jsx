@@ -62,8 +62,11 @@ const Register = () => {
           <input type='text' value={password} onChange={(e) => { setPassword(e.target.value) }}
             placeholder="Password" required /><br /><br />
 
-          <input type='password' value={cpassword} onChange={(e) => { setcPassword(e.target.value) }}
-            placeholder="Conform Password" /><br /><br />
+          <input type='password' value={cpassword} onChange={(e) => { setcPassword(e.target.value) }} onPaste={(e) => {
+            e.preventDefault();
+            alert("Pasting is not allowed!");
+          }}
+            placeholder="Conform Password" required /><br /><br />
 
           <input type='submit' value='Register' />
         </form>
