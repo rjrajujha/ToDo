@@ -21,7 +21,7 @@ function App() {
         console.log(res.data.message);
       }
       else {
-        console.log("Error Connecting Database");
+        console.log("Error Connecting Backend");
       }
     }).catch((e) => {
       console.log("Error Connecting Backend :", e)
