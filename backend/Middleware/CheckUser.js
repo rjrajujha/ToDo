@@ -6,6 +6,10 @@ const checkId = (usrid) => {
         return valid = "username must be at least 4 characters"
     }
 
+    if (usrid.length > 10) {
+        return valid = "username should not more then 10 characters"
+    }
+
     return valid;
 }
 
@@ -20,6 +24,10 @@ const checkPW = (pword) => {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (!specialChars.test(pword)) {
         return valid = "Password must contain special character"
+    }
+
+    if (pword.length > 16) {
+        return valid = "Password should not more then 16 characters"
     }
 
     return valid;
@@ -51,7 +59,6 @@ const checkUser = ((req, res, next) => {
         }
     }
     catch (error) {
-        console.log(error);
         return res.json({
             status: "failed",
             message: error
