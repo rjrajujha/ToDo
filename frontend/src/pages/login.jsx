@@ -6,6 +6,13 @@ const APIUrl = process.env.REACT_APP_APIURL;
 
 const LogIn = () => {
 
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+  if (token) {
+    navigate('/todos');
+  }
+
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,7 +42,6 @@ const LogIn = () => {
 
   }
 
-  const navigate = useNavigate();
   const SignUp = () => {
     navigate('/reg')
   }
