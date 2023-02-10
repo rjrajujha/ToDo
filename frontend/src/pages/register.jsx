@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== cpassword) {
-      alert('Check both Password');
+      alert('Both password did not match');
       return;
     }
 
