@@ -8,11 +8,6 @@ const LogIn = () => {
 
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token");
-  if (token) {
-    navigate('/todos');
-  }
-
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,7 +19,6 @@ const LogIn = () => {
         username: username,
         password: password
       }).then((res) => {
-
         if (res.data.status === "Sucess") {
           window.localStorage.setItem("token", res.data.token);
           alert("LogIn Sucessfull");
@@ -33,13 +27,11 @@ const LogIn = () => {
         else {
           alert(res.data.message);
         }
-
       }).catch((e) => {
         console.log("Error", e)
       }).finally(() => {
         console.log("User Info Fetched")
       })
-
   }
 
   const SignUp = () => {
@@ -60,6 +52,7 @@ const LogIn = () => {
             placeholder="Password" required /><br /> <br />
 
           <input type='submit' value='LOGIN' />
+          
         </form>
         <br />
         <button onClick={SignUp} id='login-reg'> Register </button> <br />
