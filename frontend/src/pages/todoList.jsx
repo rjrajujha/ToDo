@@ -21,7 +21,7 @@ const ToDos = () => {
   axios
     .get(`${APIUrl}/todos`, {
       headers: {
-        'authorization': token
+        'Authorization': token
       }
     }).then((res) => {
       if (res.data.status === "sucess") {

@@ -13,9 +13,9 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
 // define the all ToDos route
-router.get('/', jwtAuth, async (req, res) => {
+router.get('/:usr', jwtAuth, async (req, res) => {
     try {
-        const data = await ToDos.find({});
+        const data = await ToDos.find({ usr: req.params.usr });
         res.json({
             status: "sucess",
             data
@@ -31,9 +31,9 @@ router.get('/', jwtAuth, async (req, res) => {
 })
 
 // Add a ToDo
-router.post('/add', async (req, res) => {
+router.post('/add', jwtAuth, async (req, res) => {
     try {
-        const data = await ToDos.create({ "title": req.body.title, "note": req.body.note })
+        const data = await ToDos.create({ title: req.body.title, note: req.body.note, usr: req.body.usr })
         res.json({
             status: "sucess",
             data
@@ -49,9 +49,9 @@ router.post('/add', async (req, res) => {
 })
 
 // Edit a ToDo
-router.put('/edit', async (req, res) => {
+router.put('/edit/:id', jwtAuth, async (req, res) => {
     try {
-        const data = await ToDos.updateOne({ "_id": req.body._id }, { "title": req.body.title, "note": req.body.note })
+        const data = await ToDos.updateOne({ _id: req.params.id }, { "title": req.body.title, "note": req.body.note })
         res.json({
             status: "sucess",
             data
@@ -67,9 +67,9 @@ router.put('/edit', async (req, res) => {
 })
 
 // Delete a ToDo
-router.delete('/del', async (req, res) => {
+router.delete('/del/:id', jwtAuth, async (req, res) => {
     try {
-        const data = await ToDos.deleteOne({ "_id": req.body._id })
+        const data = await ToDos.deleteOne({ _id: req.params.id })
         res.json({
             status: "sucess",
             data

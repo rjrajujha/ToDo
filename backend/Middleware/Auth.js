@@ -16,7 +16,7 @@ const jwtAuth = ((req, res, next) => {
         jwt.verify(token, process.env.mySecretKey, (err, decoded) => {
             try {
                 if (decoded) {
-                    // console.log("Decoded :", decoded);
+                    console.log("Decoded :", decoded);
                     next()
                 }
                 else {

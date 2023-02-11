@@ -5,12 +5,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
-  
+
   title: {
-    type: String
+    type: String,
+    required: true
   },
   note: {
     type: String
+  },
+  usr: {
+    type: String,
+    required: true
   }
 
 });
