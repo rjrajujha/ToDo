@@ -19,7 +19,7 @@ const ToDos = () => {
   })
 
   axios
-    .get(`${APIUrl}/todos`, {
+    .get(`${APIUrl}/todos/root`, {
       headers: {
         'Authorization': token
       }
