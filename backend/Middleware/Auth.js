@@ -16,7 +16,9 @@ const jwtAuth = ((req, res, next) => {
         jwt.verify(token, process.env.mySecretKey, (err, decoded) => {
             try {
                 if (decoded) {
-                    req.useridref = decoded.user_id
+                    if (req.baseUrl === "/getuser") {
+                        req.useridref = decoded.user_id
+                    }
                     next()
                 }
                 else {
