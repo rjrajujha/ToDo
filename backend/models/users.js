@@ -7,10 +7,12 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 
   username: {
-    type: String
+    type: String,
+    required: true
   },
   password: {
-    type: String
+    type: String,
+    required: true
   }
 
 });
